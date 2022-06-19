@@ -12,3 +12,14 @@ All the API endpoints will be followed by `${rootUrl}/api/v1/admin`
 | --- | --- | ------ | ----------------- |
 | 1.  | `/` | GET    | Get all admins    |
 | 2.  | `/` | POST   | Create new admins |
+
+
+
+### Category API endpoints
+
+All the API endpoints will be followed by `${rootUrl}/api/v1/category`
+
+| #   | API | Method | Description       |
+| --- | --- | ------ | ----------------- |
+| 1.  | `/` | GET    | Get all catalogs    |
+| 2.  | `/` | POST   | Create new Category in database |

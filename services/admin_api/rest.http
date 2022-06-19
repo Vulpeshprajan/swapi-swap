@@ -17,3 +17,28 @@ Content-Type: application/json
     "address":"Sydney",
     "gender":"male"
 }
+
+
+#category router
+### get all or single category  
+
+GET  http://localhost:8001/api/v1/category/
+
+
+
+
+### Post new category 
+POST  http://localhost:8001/api/v1/category
+Content-Type: application/json
+
+{
+    "name":"Eeasdasdlectronic" ,
+    "parentCat" : null 
+}
+
+
+
+### Delete category 
+DELETE http://localhost:8001/api/v1/category/62aea713ea91489005fa6937
+
+
