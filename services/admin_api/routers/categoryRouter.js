@@ -2,7 +2,8 @@ import express from "express";
 const Router = express.Router();
 import slugify from "slugify";
 
-import {addCategory, getAllcats, getAcat, deleteCat} from "../database/category/Category.model.js";
+import {addCategory, getAllcats, getAcat, deleteCat, updateCat} from "../database/category/Category.model.js";
+import { newCategoryValidation, updateCategoryValidation } from "../middlewares/formValidation.middleware.js";
 
 Router.all ("/", (req, res, next) => {
     next();
@@ -52,9 +53,9 @@ try {
 
 
 // create new category 
-Router.post("/", async (req, res) => {
+Router.post("/", newCategoryValidation,  async (req, res) => {
     try {
-        console.log(req.body);
+      
         const slug = slugify(req.body.name, {lower:true});
         console.log(slug);
         const result = await addCategory({...req.body , slug} );
@@ -88,6 +89,37 @@ Router.post("/", async (req, res) => {
 
 
 //update category 
+ Router.patch ("/" , updateCategoryValidation, async (req, res ) => {
+    try {
+        const result = await updateCat(req.body)
+        console.log(result);
+
+        if(result?._id)
+        return res.json ({
+            status: "success",
+            message: "category has been updated", 
+
+        })
+
+    res.json ({
+        status: "error",
+        message: "unable to update your request", 
+
+    });
+        
+    } catch (error) {
+        console.log(error)
+        res.send ({
+            status: "error",
+            message: "Error, Unable to delete category", 
+        })
+        
+    }
+
+
+ })
+
+
 
 //delete category 
 Router.delete("/:_id" , async (req, res) => {

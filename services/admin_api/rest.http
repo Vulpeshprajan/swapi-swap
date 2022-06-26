@@ -18,7 +18,7 @@ Content-Type: application/json
     "gender":"male"
 }
 
-
+ 
 #category router
 ### get all or single category  
 
@@ -32,8 +32,21 @@ POST  http://localhost:8001/api/v1/category
 Content-Type: application/json
 
 {
-    "name":"Eeasdasdlectronic" ,
-    "parentCat" : null 
+    "name":"furniture",
+    "parentCat" : "62b7b0d2547f4fc3156ce8e0"
+    
+
+}
+### update category 
+PATCH   http://localhost:8001/api/v1/category
+Content-Type: application/json
+
+{
+    "_id" : "62b7b134547f4fc3156ce8e3",
+    "name":"Kitchens",
+    "parentCat" : null
+    
+
 }
 
 

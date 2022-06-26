@@ -21,4 +21,9 @@ export const deleteCat = (_id) => {
 
 
 }
+export const updateCat = ({_id, ...rest}) => {
+    return CategorySchema.findByIdAndUpdate(_id, rest, {new: true});
+
+
+}
 
